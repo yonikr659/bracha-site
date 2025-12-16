@@ -1,0 +1,590 @@
+/* =========================
+   Bracha Kraus - Makeup Website
+   RTL + Responsive + Elegant
+   ========================= */
+
+:root{
+  --bg: #ffffff;
+  --surface: #fbfaf9;
+  --text: #1f1f1f;
+  --muted: #6a6a6a;
+  --line: #ece7e1;
+
+  /* makeup palette */
+  --gold: #c7a55a;
+  --blush: #f2d7df;
+  --blush-2: #f7e9ee;
+
+  --shadow: 0 10px 25px rgba(0,0,0,0.06);
+  --radius: 18px;
+  --max: 1120px;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, "Noto Sans Hebrew", "Heebo", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  direction: rtl;
+}
+
+img{ max-width:100%; display:block; }
+
+a{ color: inherit; text-decoration: none; }
+
+.container{
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+/* ===== Header / Nav ===== */
+.header{
+  position: sticky;
+  top:0;
+  z-index: 50;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+
+.brand .logo{
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+  object-fit: contain;
+}
+
+.brand .title{
+  display:flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand .title strong{
+  letter-spacing: 0.5px;
+  font-size: 15px;
+}
+
+.brand .title span{
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+}
+
+.nav-links a{
+  font-size: 14px;
+  color: var(--text);
+  padding: 10px 10px;
+  border-radius: 999px;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.nav-links a:hover{
+  background: var(--blush-2);
+  transform: translateY(-1px);
+}
+
+.nav-links a[aria-current="page"]{
+  background: linear-gradient(90deg, var(--blush-2), #fff);
+  border: 1px solid var(--line);
+}
+
+.actions{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+.btn.primary{
+  border-color: rgba(199,165,90,0.5);
+  background: linear-gradient(180deg, #fff, rgba(242,215,223,0.35));
+}
+
+.btn.primary:hover{
+  background: linear-gradient(180deg, #fff, rgba(242,215,223,0.55));
+}
+
+.burger{
+  display:none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+
+/* רק לפסים של ההמבורגר הישן (stack), לא לאייקון Material */
+.burger .stack span{
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  display:block;
+  border-radius: 4px;
+}
+
+/* אם אתה משתמש ב-Material Symbols */
+.material-symbols-outlined{
+  font-size: 26px;
+  line-height: 1;
+  display: inline-block;
+}
+
+
+.burger .stack{
+  display:flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ===== Mobile menu panel ===== */
+.mobile-panel{
+  display:none;
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,0.95);
+}
+
+.mobile-panel .inner{
+  padding: 12px 0 16px;
+  display:flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-panel a{
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+/* ===== Hero ===== */
+.hero{
+  padding: 44px 0 22px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.card{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-card{
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card:before{
+  content:"";
+  position:absolute;
+  inset: -120px -80px auto auto;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(199,165,90,0.28), rgba(242,215,223,0.40), transparent 60%);
+  transform: rotate(12deg);
+}
+
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(199,165,90,0.18);
+}
+
+h1{
+  margin: 14px 0 10px;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: 0.2px;
+}
+
+.lead{
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.hero-cta{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.quick-info{
+  padding: 18px;
+  display:flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-row{
+  background:#fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.info-row small{ color: var(--muted); display:block; margin-bottom: 6px; }
+.info-row strong{ font-size: 14px; }
+
+/* ===== Sections ===== */
+.section{
+  padding: 18px 0 44px;
+}
+
+.section h2{
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.grid3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.feature{
+  padding: 16px;
+}
+
+.feature h3{
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.feature p{
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* ===== Gallery ===== */
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.ph{
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(242,215,223,0.55), rgba(199,165,90,0.10)),
+    #fff;
+  overflow:hidden;
+  position: relative;
+}
+
+.ph .ratio{
+  aspect-ratio: 4 / 3;
+  width: 100%;
+}
+
+.ph .caption{
+  padding: 12px;
+  background: rgba(255,255,255,0.85);
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* If you place real images: <img class="fit" ...> */
+.fit{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+/* ===== Contact form ===== */
+.form{
+  padding: 18px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+label{
+  display:block;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+input, textarea{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus, textarea:focus{
+  border-color: rgba(199,165,90,0.65);
+  box-shadow: 0 0 0 4px rgba(199,165,90,0.12);
+}
+
+textarea{ min-height: 140px; resize: vertical; }
+
+.form-actions{
+  margin-top: 12px;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items:center;
+}
+
+.note{
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ===== Footer ===== */
+.footer{
+  border-top: 1px solid var(--line);
+  padding: 20px 0 26px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer .row{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.badge i{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--blush);
+  box-shadow: 0 0 0 4px rgba(242,215,223,0.35);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 940px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .grid3{ grid-template-columns: 1fr; }
+  .gallery-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px){
+  .nav-links{ display:none; }
+
+  .actions .btn:not(.burger){ display:none; }
+
+  .burger{ display:inline-flex; align-items:center; justify-content:center; }
+
+  .mobile-panel{
+    display:block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 60;
+  }
+
+  .mobile-panel[hidden]{
+    display: none !important;
+  }
+
+  .form-grid{ grid-template-columns: 1fr; }
+}
+
+
+@media (max-width: 480px){
+  .gallery-grid{ grid-template-columns: 1fr; }
+  .brand .logo{ width: 48px; height: 48px; }
+}
+/* Floating WhatsApp button */
+.whatsapp-float{
+  position: fixed;
+  bottom: 18px;
+  left: 18px; /* נוח ב-RTL, אפשר לשנות ל-right אם תרצה */
+  z-index: 999;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  background: #25D366; /* WhatsApp green */
+  color: #ffffff; /* האייקון יצבע בלבן דרך currentColor */
+
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.whatsapp-float:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+.whatsapp-float:active{
+  transform: translateY(0);
+}
+
+.whatsapp-float svg{
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.whatsapp-float svg path{
+  fill: currentColor;
+}
+
+/* מובייל: קצת גדול יותר ונוח ללחיצה */
+@media (max-width: 480px){
+  .whatsapp-float{
+    width: 60px;
+    height: 60px;
+    bottom: 16px;
+    left: 16px;
+  }
+  .whatsapp-float svg{
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Accessibility: Skip link */
+.skip-link{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform 160ms ease;
+  z-index: 1000;
+}
+
+.skip-link:focus{
+  transform: translateY(0);
+}
+
+/* Accessibility: Focus visible */
+:focus{ outline: none; }
+
+:focus-visible{
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* תוודא שגם כפתורים וקישורים נראים בפוקוס */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+  border-radius: 12px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ scroll-behavior: auto !important; }
+  *, *::before, *::after{
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip: rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+.mobile-panel[hidden]{ display:none !important; }
